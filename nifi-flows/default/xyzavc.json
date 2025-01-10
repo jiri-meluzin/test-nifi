@@ -25,7 +25,7 @@
       },
       "flowFileExpiration" : "0 sec",
       "groupIdentifier" : "flow-contents-group",
-      "identifier" : "a5cdc998-1611-3726-a539-aa956e81e497",
+      "identifier" : "e9dbd836-5170-3718-ac53-c9cc53e4bb25",
       "labelIndex" : 0,
       "loadBalanceCompression" : "DO_NOT_COMPRESS",
       "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
@@ -38,6 +38,36 @@
         "groupId" : "flow-contents-group",
         "id" : "99b7e637-df4e-3e51-a7e0-d0fcc60bfd5e",
         "name" : "GenerateFlowFile",
+        "type" : "PROCESSOR"
+      },
+      "zIndex" : 0
+    }, {
+      "backPressureDataSizeThreshold" : "1 GB",
+      "backPressureObjectThreshold" : 10000,
+      "bends" : [ ],
+      "componentType" : "CONNECTION",
+      "destination" : {
+        "comments" : "",
+        "groupId" : "flow-contents-group",
+        "id" : "cfcbd5c0-6204-3b73-9bcb-c451f5f2eb3e",
+        "name" : "UpdateAttribute",
+        "type" : "PROCESSOR"
+      },
+      "flowFileExpiration" : "0 sec",
+      "groupIdentifier" : "flow-contents-group",
+      "identifier" : "3a92ba69-67f8-311d-9c94-e69ccf29abc6",
+      "labelIndex" : 0,
+      "loadBalanceCompression" : "DO_NOT_COMPRESS",
+      "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
+      "name" : "",
+      "partitioningAttribute" : "",
+      "prioritizers" : [ ],
+      "selectedRelationships" : [ "permission.denied" ],
+      "source" : {
+        "comments" : "",
+        "groupId" : "flow-contents-group",
+        "id" : "5b857123-acc6-3b20-a5bc-f9139fe8d422",
+        "name" : "FetchSFTP",
         "type" : "PROCESSOR"
       },
       "zIndex" : 0
