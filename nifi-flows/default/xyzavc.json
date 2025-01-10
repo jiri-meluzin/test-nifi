@@ -117,6 +117,7 @@
     "maxConcurrentTasks" : 1,
     "name" : "xyz",
     "outputPorts" : [ ],
+    "parameterContextName" : "some-param-context",
     "position" : {
       "x" : 0.0,
       "y" : 0.0
@@ -154,7 +155,8 @@
         "fetchfiletransfer-notfound-loglevel" : "ERROR",
         "Connection Timeout" : "30 sec",
         "Data Timeout" : "30 sec",
-        "Strict Host Key Checking" : "false"
+        "Strict Host Key Checking" : "false",
+        "Password" : "#{Passwords}"
       },
       "propertyDescriptors" : {
         "Port" : {
@@ -420,14 +422,16 @@
       "name" : "GenerateFlowFile",
       "penaltyDuration" : "30 sec",
       "position" : {
-        "x" : -351.0,
-        "y" : -164.49999237060547
+        "x" : -352.0,
+        "y" : -168.0
       },
       "properties" : {
         "character-set" : "UTF-8",
         "File Size" : "0B",
         "Batch Size" : "1",
         "Unique FlowFiles" : "false",
+        "x" : "#{EDW}",
+        "y" : "${#{EDW}:jsonPath(\"$.hostname\")}",
         "Data Format" : "Text"
       },
       "propertyDescriptors" : {
@@ -473,6 +477,20 @@
           "name" : "Unique FlowFiles",
           "sensitive" : false
         },
+        "x" : {
+          "displayName" : "x",
+          "dynamic" : true,
+          "identifiesControllerService" : false,
+          "name" : "x",
+          "sensitive" : false
+        },
+        "y" : {
+          "displayName" : "y",
+          "dynamic" : true,
+          "identifiesControllerService" : false,
+          "name" : "y",
+          "sensitive" : false
+        },
         "Data Format" : {
           "displayName" : "Data Format",
           "dynamic" : false,
@@ -497,8 +515,327 @@
   },
   "flowEncodingVersion" : "1.0",
   "latest" : false,
-  "parameterContexts" : { },
-  "parameterProviders" : { },
+  "parameterContexts" : {
+    "Environment Variables" : {
+      "componentType" : "PARAMETER_CONTEXT",
+      "inheritedParameterContexts" : [ ],
+      "name" : "Environment Variables",
+      "parameterGroupName" : "Environment Variables",
+      "parameterProvider" : "4fdd6ddf-0194-1000-dde3-ddfeafdb5efb",
+      "parameters" : [ {
+        "name" : "CONFIG_FILE_PROPERTY",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "FPS_BROWSER_USER_PROFILE_STRING",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "CommonProgramFiles",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "OS",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "COMPUTERNAME",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "DriverData",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "RUN_COMMAND",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "ComSpec",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "ProgramW6432",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "PROCESSOR_ARCHITECTURE",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "HOMEPATH",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "HOMEDRIVE",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "PROCESSOR_IDENTIFIER",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "TIBEMS_ROOT",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "TMP",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "USERDOMAIN_ROAMINGPROFILE",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "PROCESSOR_LEVEL",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "SESSIONNAME",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "PSModulePath",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "NIFI_HOME",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "LOG_DIR_PROPERTY",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "PROMPT",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "COMMANDER_INI",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "OneDrive",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "APPDATA",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "ChocolateyInstall",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "USERNAME",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "VBOX_MSI_INSTALL_PATH",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "Path",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "PROCESSOR_REVISION",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "PATHEXT",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "OneDriveConsumer",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "COMMANDER_INSTANCE",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "CommonProgramW6432",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "NIFI_LOG_DIR",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "COMMANDER_SESSIONNAME",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "SystemRoot",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "ProgramData",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "TEMP",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "COMMANDER_PATH",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "EFC_13900",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "USERPROFILE",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "ProgramFiles",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "PUBLIC",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "BOOTSTRAP_HEAP_SIZE",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "NIFI_PID_DIR",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "windir",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "NUMBER_OF_PROCESSORS",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "ZES_ENABLE_SYSMAN",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "HTTP_PROXY_",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "LOCALAPPDATA",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "OneDriveCommercial",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "ChocolateyLastPathUpdate",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "BOOTSTRAP_LIB_DIR",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "COMMANDER_DRIVE",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "FPS_BROWSER_APP_PROFILE_STRING",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "LOGONSERVER",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "COMMANDER_EXE",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "USERDOMAIN",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "ALLUSERSPROFILE",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "JAVA_ARGS",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "CONF_DIR",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "JAVA_MEMORY",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "JAVA_HOME",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "SystemDrive",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "PROPERTIES_FILE_PROPERTY",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "JAVA_EXE",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "JAVA_PARAMS",
+        "provided" : true,
+        "sensitive" : true
+      }, {
+        "name" : "HTTPS_PROXY_",
+        "provided" : true,
+        "sensitive" : true
+      } ],
+      "synchronized" : true
+    },
+    "some-param-context" : {
+      "componentType" : "PARAMETER_CONTEXT",
+      "inheritedParameterContexts" : [ "Environment Variables" ],
+      "name" : "some-param-context",
+      "parameters" : [ {
+        "description" : "",
+        "name" : "EDW",
+        "provided" : false,
+        "sensitive" : false,
+        "value" : "{\n   \"hostname\": \"edw.hostname.cz\",\n   \"port\": \"22\",\n   \"some\": {\n     \"other\" : \"xx\"\n   },\n  \"currentTime\": \"${now()}\"\n\n}"
+      }, {
+        "description" : "",
+        "name" : "Passwords",
+        "provided" : false,
+        "sensitive" : true
+      }, {
+        "description" : "",
+        "name" : "Password",
+        "provided" : false,
+        "sensitive" : true
+      } ]
+    }
+  },
+  "parameterProviders" : {
+    "4fdd6ddf-0194-1000-dde3-ddfeafdb5efb" : {
+      "bundle" : {
+        "artifact" : "nifi-standard-nar",
+        "group" : "org.apache.nifi",
+        "version" : "2.1.0"
+      },
+      "identifier" : "4fdd6ddf-0194-1000-dde3-ddfeafdb5efb",
+      "name" : "EnvironmentVariableParameterProvider",
+      "type" : "org.apache.nifi.parameter.EnvironmentVariableParameterProvider"
+    }
+  },
   "snapshotMetadata" : {
     "author" : "b6673b04-49f7-4aec-8667-64638c45781f",
     "flowIdentifier" : "xyzavc",
