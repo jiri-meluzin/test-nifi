@@ -155,8 +155,7 @@
         "fetchfiletransfer-notfound-loglevel" : "ERROR",
         "Connection Timeout" : "30 sec",
         "Data Timeout" : "30 sec",
-        "Strict Host Key Checking" : "false",
-        "Password" : "#{Passwords}"
+        "Strict Host Key Checking" : "false"
       },
       "propertyDescriptors" : {
         "Port" : {
