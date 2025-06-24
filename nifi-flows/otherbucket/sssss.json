@@ -14,7 +14,10 @@
     "connections" : [ {
       "backPressureDataSizeThreshold" : "1 GB",
       "backPressureObjectThreshold" : 10000,
-      "bends" : [ ],
+      "bends" : [ {
+        "x" : -456.0,
+        "y" : -584.0
+      } ],
       "componentType" : "CONNECTION",
       "destination" : {
         "groupId" : "bb1c0b17-aa5a-3ee9-8bb4-5ea7687c7ca9",
