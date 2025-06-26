@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-nifi
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-nifi
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-nifi
+    spec:
+      containers:
+        - name: nifi
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.nifi.properties.webHttpPort }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            - name: NIFI_SENSITIVE_PROPS_KEY
+              value: {{ .Values.properties.sensitiveKey }}
+            - name: NIFI_AUTH_SINGLE_USER_USERNAME
+              value: {{ .Values.properties.singleUser.username }}
+            - name: NIFI_AUTH_SINGLE_USER_PASSWORD
+              value: {{ .Values.properties.singleUser.password }}
+            - name: NIFI_WEB_HTTP_PORT
+              value: "{{ .Values.nifi.properties.webHttpPort }}"
+            - name: NIFI_CLUSTER_IS_NODE
+              value: "{{ .Values.nifi.properties.isClustered }}"
+          volumeMounts:
+            {{- if .Values.persistence.enabled }}
+            - name: nifi-storage
+              mountPath: /opt/nifi/nifi-current/flowfile_repository
+            {{- end }}
+      volumes:
+        {{- if .Values.persistence.enabled }}
+        - name: nifi-storage
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-nifi-pvc
+        {{- end }}
